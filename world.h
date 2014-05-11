@@ -9,7 +9,9 @@ struct WorldStruct {
     int entity_count;
     Entity *entities;
 
-    Entity *(*createEntity)(World *self);
+    Entity *(*addEntity)(World *self, Entity entity);
+    void (*update)(World *self);
+    void (*destroy)(World *self);
 };
 
 World construct_World();

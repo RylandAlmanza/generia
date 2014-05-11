@@ -3,9 +3,16 @@
 
 #include "point.h"
 
-static const Point NORTH_DELTA = {.x = 0, .y = -1};
-static const Point EAST_DELTA = {.x = 1, .y = 0};
-static const Point SOUTH_DELTA = {.x = 0, .y = 1};
-static const Point WEST_DELTA = {.x = -1, .y = 0};
+static const int NORTH = 0;
+static const int EAST = 1;
+static const int SOUTH = 2;
+static const int WEST = 3;
+
+static const Point directions[] = {
+    {.x = 0, .y = -1},
+    {.x = 1, .y = 0},
+    {.x = 0, .y = 1},
+    {.x = -1, .y = 0}
+};
 
 #endif

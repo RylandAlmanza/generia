@@ -3,13 +3,13 @@
 Point get_delta_from_key(int key) {
     Point delta = {.x = 0, .y = 0};
     if (key == 38 || key == 'k') {
-        delta = NORTH_DELTA;
+        delta = directions[NORTH];
     } else if (key == 39 || key == 'l') {
-        delta = EAST_DELTA;
+        delta = directions[EAST];
     } else if (key == 40 || key == 'j') {
-        delta = SOUTH_DELTA;
+        delta = directions[SOUTH];
     } else if (key == 37 || key == 'h') {
-        delta = WEST_DELTA;
+        delta = directions[WEST];
     }
     return delta;
 }

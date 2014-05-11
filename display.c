@@ -17,6 +17,7 @@ int initialize_all_color_pairs() {
 void Display_init() {
     initscr();
     cbreak();
+    nodelay(stdscr, TRUE);
     keypad(stdscr, TRUE);
     noecho();
     curs_set(0);
@@ -28,6 +29,13 @@ void Display_draw(char sprite, int x, int y, int fg, int bg) {
     int attribute = COLOR_PAIR(get_color_pair(fg, bg));
     attron(attribute);
     mvaddch(y, x, sprite);
+    attroff(attribute);
+}
+
+void Display_drawString(char *str, int x, int y, int fg, int bg) {
+    int attribute = COLOR_PAIR(get_color_pair(fg, bg));
+    attron(attribute);
+    mvprintw(y, x, str);
     attroff(attribute);
 }
 
@@ -45,6 +53,7 @@ Display construct_Display() {
 
     display.init = &Display_init;
     display.draw = &Display_draw;
+    display.drawString = &Display_drawString;
     display.uninit = &Display_uninit;
     display.flush = &Display_flush;
 

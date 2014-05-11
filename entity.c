@@ -1,6 +1,6 @@
 #include "entity.h"
 
-Entity construct_Entity(char sprite, int x, int y) {
+Entity construct_Entity(Sprite sprite, int x, int y) {
     Entity entity;
 
     entity.sprite = sprite;

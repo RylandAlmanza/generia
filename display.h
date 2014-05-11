@@ -15,6 +15,7 @@ typedef struct DisplayStruct Display;
 struct DisplayStruct {
     void (*init)();
     void (*draw)(char sprite, int x, int y, int fg, int bg);
+    void (*drawString)(char *str, int x, int y, int fg, int bg);
     void (*flush)();
     void (*uninit)();
 };
