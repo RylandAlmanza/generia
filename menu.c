@@ -1,7 +1,9 @@
 #include "menu.h"
 #include <stdlib.h>
 
-void Menu_addOption(Menu *self, char *label, void (*callback)()) {
+void Menu_addOption(Menu *self,
+                    char *label,
+                    void (*callback)(Display *display)) {
     MenuOption option = {
         .label = label,
         .callback = callback

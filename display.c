@@ -43,6 +43,10 @@ void Display_flush() {
     refresh();
 }
 
+void Display_wipe() {
+    clear();
+}
+
 void Display_uninit() {
     curs_set(1);
     endwin();
@@ -56,6 +60,7 @@ Display construct_Display() {
     display.drawString = &Display_drawString;
     display.uninit = &Display_uninit;
     display.flush = &Display_flush;
+    display.wipe = &Display_wipe;
 
     return display;
 }

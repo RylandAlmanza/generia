@@ -2,14 +2,16 @@
 #include "scene.h"
 #include "startmenu.h"
 #include "menu.h"
+#include "gamescene.h"
 
 Menu start_menu;
 
-void start_game() {
-    game_over = true;
+void start_game(Display *display) {
+    change_scene(&init_game_scene, &update_game_scene);
+    init_scene(display);
 }
 
-void quit_game() {
+void quit_game(Display *display) {
     game_over = true;
 }
 
@@ -51,6 +53,6 @@ void update_start_menu(Display *display, int key) {
         update_selection(display, -1);
     }
     if (key == 'x') {
-        start_menu.options[start_menu.selection].callback();
+        start_menu.options[start_menu.selection].callback(display);
     }
 }
