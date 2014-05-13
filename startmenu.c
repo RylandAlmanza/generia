@@ -7,7 +7,7 @@
 Menu start_menu;
 
 void start_game(Display *display) {
-    change_scene(&init_game_scene, &update_game_scene);
+    change_scene(&init_game_scene, &update_game_scene, &uninit_game_scene);
     init_scene(display);
 }
 
@@ -56,3 +56,5 @@ void update_start_menu(Display *display, int key) {
         start_menu.options[start_menu.selection].callback(display);
     }
 }
+
+void uninit_start_menu() {}

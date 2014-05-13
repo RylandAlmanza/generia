@@ -5,5 +5,6 @@
 
 void init_start_menu(Display *display);
 void update_start_menu(Display *display, int key);
+void uninit_start_menu();
 
 #endif

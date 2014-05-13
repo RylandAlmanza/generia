@@ -17,7 +17,7 @@ int main() {
     display = construct_Display();
     display.init();
 
-    change_scene(&init_start_menu, &update_start_menu);
+    change_scene(&init_start_menu, &update_start_menu, &uninit_start_menu);
     init_scene(&display);
 
     int key;
@@ -31,6 +31,7 @@ int main() {
 
         usleep(33333);
     }
+    uninit_scene();
 
     display.uninit();
 }
