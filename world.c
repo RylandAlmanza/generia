@@ -30,10 +30,16 @@ void World_destroy(World *self) {
 World construct_World() {
     World world;
 
-    Sprite grass = {
+    Sprite grass_sprite = {
         .character = '.',
         .fg = GREEN,
-        .bg = BLACK,
+        .bg = BLACK
+    };
+
+    Sprite tree_sprite = {
+        .character = 'T',
+        .fg = GREEN,
+        .bg = BLACK
     };
 
     world.map = malloc(sizeof(Tile) * (80 * 24));
@@ -42,7 +48,11 @@ World construct_World() {
     for (y = 0; y < 24; y++) {
         world.map[y] = malloc(sizeof(Tile) * 80);
         for (x = 0; x < 80; x++) {
-            world.map[y][x] = construct_Tile(grass, x, y, false);
+            if (x == 0 || y == 0 || x == 79 || y == 23) {
+                world.map[y][x] = construct_Tile(tree_sprite, x, y, true);
+            } else {
+                world.map[y][x] = construct_Tile(grass_sprite, x, y, false);
+            }
         }
     }
 

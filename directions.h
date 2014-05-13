@@ -15,4 +15,11 @@ static const Point directions[] = {
     {.x = -1, .y = 0}
 };
 
+static const int opposite_directions[] = {
+    2,
+    3,
+    0,
+    1
+};
+
 #endif

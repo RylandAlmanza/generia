@@ -1,6 +1,7 @@
 #include "gamescene.h"
 #include "keyutils.h"
 #include "world.h"
+#include "directions.h"
 
 World world;
 Entity *player;
@@ -14,7 +15,7 @@ void init_game_scene(Display *display) {
         .bg = BLACK,
     };
 
-    player = world.addEntity(&world, construct_Entity(player_sprite, 0, 0));
+    player = world.addEntity(&world, construct_Entity(player_sprite, 1, 1));
 
     display->wipe();
 
@@ -54,14 +55,16 @@ void update_game_scene(Display *display, int key) {
                       world.map[entity->y][entity->x].sprite.bg);
     }
     if (key == 'h' || key == 'j' || key == 'k' || key == 'l') {
-        Point delta = get_delta_from_key(key);
-        player->x += delta.x;
-        player->y += delta.y;
+        int direction = get_direction_from_key(key);
+        player->move(player, direction);
     }
 
     for (i = 0; i < world.entity_count; i++) {
         Entity *entity = &world.entities[i];
         entity->update(entity);
+        if (world.map[entity->y][entity->x].is_solid) {
+            entity->move(entity, opposite_directions[entity->is_facing]);
+        }
         display->draw(entity->sprite.character,
                       entity->x,
                       entity->y,
