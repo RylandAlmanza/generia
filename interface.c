@@ -1,4 +1,4 @@
-#include "display.h"
+#include "interface.h"
 
 int get_color_pair(int fg, int bg) {
     return fg + (bg * 8) + 1;
@@ -19,6 +19,7 @@ void Display_init() {
     cbreak();
     nodelay(stdscr, TRUE);
     keypad(stdscr, TRUE);
+    mousemask(BUTTON1_PRESSED | REPORT_MOUSE_POSITION, NULL);
     noecho();
     curs_set(0);
     start_color();
@@ -63,4 +64,33 @@ Display construct_Display() {
     display.wipe = &Display_wipe;
 
     return display;
+}
+
+Point get_delta_from_key(int key) {
+    Point delta = {.x = 0, .y = 0};
+    if (key == 38 || key == 'k') {
+        delta = directions[NORTH];
+    } else if (key == 39 || key == 'l') {
+        delta = directions[EAST];
+    } else if (key == 40 || key == 'j') {
+        delta = directions[SOUTH];
+    } else if (key == 37 || key == 'h') {
+        delta = directions[WEST];
+    }
+    return delta;
+}
+
+int get_direction_from_key(int key) {
+    if (key == 'k') {
+        return NORTH;
+    }
+    if (key == 'l') {
+        return EAST;
+    }
+    if (key == 'j') {
+        return SOUTH;
+    }
+    if (key == 'h') {
+        return WEST;
+    }
 }

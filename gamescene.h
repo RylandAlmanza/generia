@@ -4,7 +4,7 @@
 #include "scene.h"
 
 void init_game_scene(Display *display);
-void update_game_scene(Display *display, int key);
+void update_game_scene(Display *display, MEVENT event);
 void uninit_game_scene();
 
 #endif

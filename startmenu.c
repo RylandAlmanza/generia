@@ -28,32 +28,22 @@ void init_start_menu(Display *display) {
                             WHITE,
                             BLACK);
     }
-    display->draw('>', 0, start_menu.selection, WHITE, BLACK);
+    //display->draw('>', 0, start_menu.selection, WHITE, BLACK);
     display->flush();
 }
 
-void update_selection(Display *display, int delta) {
+/*void update_selection(Display *display, int selection) {
     display->draw(' ', 0, start_menu.selection, WHITE, BLACK);
-    start_menu.selection += delta;
-    if (start_menu.selection < 0) {
-        start_menu.selection = start_menu.option_count - 1;
-    }
-    if (start_menu.selection >= start_menu.option_count) {
-        start_menu.selection = 0;
-    }
+    start_menu.selection = selection;
     display->draw('>', 0, start_menu.selection, WHITE, BLACK);
     display->flush();
-}
+}*/
 
-void update_start_menu(Display *display, int key) {
-    if (key == 'j') {
-        update_selection(display, 1);
-    }
-    if (key == 'k') {
-        update_selection(display, -1);
-    }
-    if (key == 'x') {
-        start_menu.options[start_menu.selection].callback(display);
+void update_start_menu(Display *display, MEVENT event) {
+    if (event.bstate & BUTTON1_PRESSED) {
+        if (event.y < start_menu.option_count) {
+            start_menu.options[event.y].callback(display);
+        }
     }
 }
 

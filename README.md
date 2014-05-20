@@ -1,6 +1,11 @@
 Generia
 =======
 
-Currently consists of a start menu. The keys "k" and "j" move your selection up
-and down respectively. The "x" key chooses your selected option. The "Start" and
-"Quit" options both quit the game; This is a feature, not a bug.
+This game has everything! A start menu! Walking around! You name it (unless it's
+not one of the two things I mentioned!)
+
+Controls
+--------
+Click an option on the start menu to select it!
+
+Once you've chosen "Start game," click somewhere on the map to walk there!

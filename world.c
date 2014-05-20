@@ -1,5 +1,5 @@
 #include "world.h"
-#include "display.h"
+#include "interface.h"
 #include <stdlib.h>
 
 Entity *World_addEntity(World *self, Entity entity) {

@@ -1,7 +1,8 @@
-#ifndef DISPLAY_H_
-#define DISPLAY_H_
+#ifndef INTERFACE_H_
+#define INTERFACE_H_
 
 #include <ncurses.h>
+#include "directions.h"
 
 static const int BLACK = COLOR_BLACK;
 static const int YELLOW = COLOR_YELLOW;
@@ -22,5 +23,8 @@ struct DisplayStruct {
 };
 
 Display construct_Display();
+
+Point get_delta_from_key(int key);
+int get_direction_from_key(int key);
 
 #endif

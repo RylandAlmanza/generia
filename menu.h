@@ -1,7 +1,7 @@
 #ifndef MENU_H_
 #define MENU_H_
 
-#include "display.h"
+#include "interface.h"
 
 typedef struct MenuOptionStruct MenuOption;
 

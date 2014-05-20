@@ -1,4 +1,4 @@
-#include "display.h"
+#include "interface.h"
 #include "time.h"
 #include "scene.h"
 #include "startmenu.h"
@@ -20,14 +20,15 @@ int main() {
     change_scene(&init_start_menu, &update_start_menu, &uninit_start_menu);
     init_scene(&display);
 
+    MEVENT event;
     int key;
     while (key != 'q' && game_over == false) {
         key = getch();
-        if (key == ERR) {
-            key = 0;
+        if (key != ERR && key == KEY_MOUSE) {
+            getmouse(&event);
         }
         
-        update_scene(&display, key);
+        update_scene(&display, event);
 
         usleep(33333);
     }
