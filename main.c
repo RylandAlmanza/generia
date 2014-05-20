@@ -2,8 +2,9 @@
 #include "time.h"
 #include "scene.h"
 #include "startmenu.h"
-#include <stdlib.h>
+#include "random.h"
 #include <stdio.h>
+#include <time.h>
 
 int WORLD_WIDTH;
 int WORLD_HEIGHT;
@@ -13,6 +14,7 @@ int CAMERA_HEIGHT;
 Display display;
 
 int main() {
+    init_rand();
     game_over = false;
     display = construct_Display();
     display.init();

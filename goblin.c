@@ -1,4 +1,4 @@
-#include <stdlib.h>
+#include "random.h"
 #include "goblin.h"
 #include "directions.h"
 #include "interface.h"
@@ -6,8 +6,17 @@
 #undef move
 
 void Goblin_update(Entity *self) {
-    int direction = rand() % 4;
-    self->move(self, direction);
+    if (self->ticks_idle > 30 / 4) {
+        if (self->x == self->destination.x &&
+            self->y == self->destination.y) {
+            self->destination.x = rand_lim(77) + 1;
+            self->destination.y = rand_lim(21) + 1;
+        }
+        self->moveToDestination(self);
+        self->ticks_idle = 0;
+    } else {
+        self->ticks_idle++;
+    }
 }
 
 Entity construct_Goblin(int x, int y) {
