@@ -3,6 +3,7 @@
 #include "world.h"
 #include "directions.h"
 #include "goblin.h"
+#include "chicken.h"
 #include "player.h"
 
 World world;
@@ -24,6 +25,9 @@ void init_game_scene(Display *display) {
         x = rand_lim(77) + 1;
         y = rand_lim(21) + 1;
         world.addEntity(&world, construct_Goblin(x, y));
+        x = rand_lim(77) + 1;
+        y = rand_lim(21) + 1;
+        world.addEntity(&world, construct_Chicken(x, y));
     }
 
     display->wipe();
